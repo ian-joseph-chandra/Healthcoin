@@ -15,12 +15,14 @@ class CreateHospitalsTable extends Migration
     {
         Schema::create('hospitals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('blockchain');
+            $table->unsignedBigInteger('blockchain_id');
+            $table->foreign('blockchain_id')->references('id')->on('blockchains');
             $table->string('name');
             $table->text('address');
             $table->string('email');
             $table->string('phone');
             $table->timestamps();
+            $table->dropColumn('updated_at');
         });
     }
 

@@ -16,12 +16,16 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('patient_id');
+            $table->foreign('patient_id')->references('id')->on('users');
             $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('users');
             $table->unsignedBigInteger('hospital_id');
+            $table->foreign('hospital_id')->references('id')->on('users');
             $table->string('contract_address');
             $table->string('disease_name');
             $table->text('diagnose');
             $table->timestamps();
+            $table->dropColumn('updated_at');
         });
     }
 

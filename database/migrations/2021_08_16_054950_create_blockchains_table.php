@@ -17,7 +17,6 @@ class CreateBlockchainsTable extends Migration
             $table->id();
             $table->string('address');
             $table->unsignedBigInteger('balance');
-            $table->timestamps();
         });
     }
 

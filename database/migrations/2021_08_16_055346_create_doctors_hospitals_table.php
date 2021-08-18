@@ -15,7 +15,9 @@ class CreateDoctorsHospitalsTable extends Migration
     {
         Schema::create('doctors_hospitals', function (Blueprint $table) {
             $table->unsignedBigInteger('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('users');
             $table->unsignedBigInteger('hospital_id');
+            $table->foreign('hospital_id')->references('id')->on('hospitals');
         });
     }
 

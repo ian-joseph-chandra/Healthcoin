@@ -16,6 +16,8 @@ class CreateRecordUpdateLogsTable extends Migration
         Schema::create('record_update_logs', function (Blueprint $table) {
             $table->unsignedBigInteger('old_record_id');
             $table->unsignedBigInteger('new_record_id');
+            $table->foreign('old_record_id')->references('id')->on('records');
+            $table->foreign('new_record_id')->references('id')->on('records');
         });
     }
 

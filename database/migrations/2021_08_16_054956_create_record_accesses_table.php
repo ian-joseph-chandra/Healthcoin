@@ -16,9 +16,11 @@ class CreateRecordAccessesTable extends Migration
         Schema::create('record_accesses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('patient_id');
+            $table->foreign('patient_id')->references('id')->on('users');
             $table->string('token');
             $table->timestamps();
-            $table->timestamp('terminated_at')->useCurrent();
+            $table->timestamp('terminated_at')->nullable();
+            $table->dropColumn('updated_at');
         });
     }
 
